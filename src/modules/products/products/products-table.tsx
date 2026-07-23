@@ -1,0 +1,211 @@
+import { AlertDialog } from '@/components/alert-dialog';
+import { DataTable } from '@/components/data-table';
+import { DataTableHead, type HeadCell } from '@/components/data-table-head';
+import { SearchInput } from '@/components/search-input';
+import { useDialog } from '@/hooks/useDialog';
+import { useQueryValue } from '@/hooks/useQueryValue';
+import { useSearch } from '@/hooks/useSearch';
+import type { Product } from '@/types/products';
+import {
+  Box,
+  Button,
+  Card,
+  MenuItem,
+  TableBody,
+  TextField,
+} from '@mui/material';
+import { useQueryClient } from '@tanstack/react-query';
+import { useState, type ChangeEvent } from 'react';
+import { useDeleteProducts } from './api';
+import { ProductTableRow } from './products-table-row';
+
+interface ProductsTableProps {
+  products?: Product[];
+  count?: number;
+  isError: boolean;
+  isLoading: boolean;
+  refetch: any;
+}
+
+const headCells: HeadCell[] = [
+  {
+    id: 'id',
+    label: 'Id',
+    width: '32%',
+  },
+  {
+    id: 'title',
+    label: 'Title',
+    width: '30%',
+  },
+  {
+    id: 'createdAt',
+    label: 'Created At',
+    width: '20%',
+  },
+  {
+    id: 'status',
+    label: 'Status',
+    width: '10%',
+  },
+];
+
+const statusOptions = [
+  {
+    label: 'All',
+    value: 'all',
+  },
+  {
+    label: 'Published',
+    value: 'published',
+  },
+  {
+    label: 'Draft',
+    value: 'draft',
+  },
+  {
+    label: 'Archived',
+    value: 'archived',
+  },
+];
+
+export const ProductsTable = ({
+  products,
+  count,
+  isError,
+  isLoading,
+  refetch,
+}: ProductsTableProps) => {
+  const queryClient = useQueryClient();
+  const [keyword, handleKeywordChange, handleSearch] = useSearch();
+  const [selected, setSelected] = useState<string[]>([]);
+  const [status, setStatus] = useQueryValue('status', 'all', 'all');
+  const [dialogOpen, handleOpenDialog, handleCloseDialog] = useDialog();
+  const deleteProducts = useDeleteProducts(() =>
+    queryClient.invalidateQueries({ queryKey: ['products'] })
+  );
+
+  const handleStatusChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setStatus(event.target.value);
+  };
+
+  const handleSelect = (id: string): void => {
+    setSelected((prevSelected) => {
+      if (prevSelected.includes(id)) {
+        return prevSelected.filter((_id) => _id !== id);
+      }
+
+      return [...prevSelected, id];
+    });
+  };
+
+  const handleSelectAll = (): void => {
+    if (!products) return;
+
+    setSelected((prevSelected) => {
+      if (prevSelected.length === products?.length) {
+        return [];
+      }
+
+      return products?.map((product) => product._id);
+    });
+  };
+
+  const handleDeleteProducts = () => {
+    deleteProducts.mutate(selected, {
+      onSuccess: () => {
+        setSelected([]);
+        handleCloseDialog();
+      },
+    });
+  };
+
+  return (
+    <>
+      <Card>
+        <Box
+          sx={{
+            display: 'grid',
+            gap: 2,
+            gridTemplateColumns: {
+              sm: `${!!selected.length ? 'auto' : ''} 1fr 240px`,
+            },
+            p: 2,
+          }}
+        >
+          {!!selected.length && (
+            <Button
+              color="error"
+              onClick={handleOpenDialog}
+              variant="contained"
+            >
+              Bulk Delete {selected.length}
+            </Button>
+          )}
+          <form onSubmit={handleSearch}>
+            <SearchInput
+              onChange={handleKeywordChange}
+              placeholder="Search products..."
+              value={keyword}
+            />
+          </form>
+          <TextField
+            fullWidth
+            label="Status"
+            name="status"
+            onChange={handleStatusChange}
+            value={status}
+            select
+          >
+            {statusOptions.map((option) => (
+              <MenuItem
+                key={option.value}
+                value={option.value}
+              >
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Box>
+        <DataTable
+          isLoading={isLoading}
+          count={count}
+          hasError={isError}
+          hasNoData={count === 0}
+          headCellsCount={headCells.length}
+          onRefetchData={refetch}
+          headSlot={
+            <DataTableHead
+              isLoading={isLoading}
+              headCells={headCells}
+              selectedLength={selected.length}
+              itemsLength={products?.length}
+              onSelectAll={handleSelectAll}
+            />
+          }
+        >
+          <TableBody>
+            {products?.map((product) => (
+              <ProductTableRow
+                product={product}
+                key={product._id}
+                onSelect={() => {
+                  handleSelect(product._id);
+                }}
+                selected={selected.includes(product._id)}
+              />
+            ))}
+          </TableBody>
+        </DataTable>
+      </Card>
+      <AlertDialog
+        content="Are you sure you want to permanently delete these products?"
+        isLoading={deleteProducts.isPending}
+        onClose={handleCloseDialog}
+        onSubmit={handleDeleteProducts}
+        open={dialogOpen}
+        title={`Delete ${selected.length} articles`}
+      />
+    </>
+  );
+};

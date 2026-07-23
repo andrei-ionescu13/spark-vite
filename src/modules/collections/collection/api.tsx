@@ -1,0 +1,31 @@
+import type { Collection } from '@/types/collection';
+import { appFetch } from '@/utils/app-fetch';
+import { useMutation, useQuery } from '@tanstack/react-query';
+
+export const getCollection = (id: string) => () =>
+  appFetch<Collection>({
+    url: `/collections/${id}`,
+    withAuth: true,
+  });
+
+export const useGetCollectionQuery = (id: string) =>
+  useQuery({
+    queryKey: ['collection', id],
+    queryFn: getCollection(id),
+    enabled: !!id,
+  });
+
+export const useUpdateCollection = (onSuccess: () => Promise<any>) =>
+  useMutation<Collection, Error, { id: string; body: BodyInit }>({
+    mutationFn: ({ id, body }) =>
+      appFetch({
+        url: `/collections/${id}`,
+        config: {
+          body: body,
+          method: 'PUT',
+        },
+        withAuth: true,
+        noContentType: true,
+      }),
+    onSuccess,
+  });
