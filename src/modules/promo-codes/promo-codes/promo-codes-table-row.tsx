@@ -3,10 +3,10 @@ import { AlertDialog } from '@/components/alert-dialog';
 import { DataTableRow } from '@/components/data-table-row';
 import { ActionsIconButton } from '@/components/icon-actions';
 import { Label } from '@/components/label';
+import { Link } from '@/components/link';
 import {
   Checkbox,
   colors,
-  Link,
   TableCell,
   Typography,
   useTheme,
@@ -121,7 +121,7 @@ export const PromoCodesTableRow = ({
         <TableCell>
           <Link
             underline="hover"
-            href={`/promo-codes/${promoCode._id}`}
+            to={`/promo-codes/${promoCode._id}`}
           >
             {promoCode.code}
           </Link>

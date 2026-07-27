@@ -3,13 +3,15 @@ import { AlertDialog } from '@/components/alert-dialog';
 import { DataTableRow } from '@/components/data-table-row';
 import { ActionsIconButton } from '@/components/icon-actions';
 import { Label } from '@/components/label';
+import { Link } from '@/components/link';
 import { MarkdownPreview } from '@/components/markdown-preview';
 import { useDialog } from '@/hooks/useDialog';
 import type { Article } from '@/types/articles';
 import { formatDate } from '@/utils/format-date';
-import { Checkbox, colors, Link, TableCell, useTheme } from '@mui/material';
+import { Checkbox, colors, TableCell, useTheme } from '@mui/material';
 import { useQueryClient } from '@tanstack/react-query';
 import { CopyIcon, EyeIcon, TrashIcon } from 'lucide-react';
+import { Link as RouterLink } from 'react-router';
 import { useDeleteArticle } from '../../api';
 import { ArticleDuplicateDialog } from '../components/article-duplicate-dialog';
 
@@ -107,8 +109,9 @@ export const ArticlesTableRow = ({
         </TableCell>
         <TableCell>
           <Link
-            href={`/articles/${article._id}`}
+            to={`/articles/${article._id}`}
             underline="hover"
+            component={RouterLink}
           >
             {article.title}
           </Link>

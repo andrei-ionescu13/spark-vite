@@ -1,11 +1,5 @@
-import {
-  Box,
-  Checkbox,
-  Link,
-  TableCell,
-  Typography,
-  useTheme,
-} from '@mui/material';
+import { Link } from '@/components/link';
+import { Box, Checkbox, TableCell, Typography, useTheme } from '@mui/material';
 import { PencilIcon, TrashIcon } from 'lucide-react';
 import type { ActionsItem } from '../../../components/actions-menu';
 import { AlertDialog } from '../../../components/alert-dialog';
@@ -114,7 +108,7 @@ export const KeysTableRow = ({
               color="textPrimary"
               variant="body1"
               underline="hover"
-              href={`/products/${key.product?._id}`}
+              to={`/products/${key.product?._id}`}
             >
               {key.product?.title}
             </Link>

@@ -1,12 +1,6 @@
+import { Link } from '@/components/link';
 import type { Review } from '@/types/review';
-import {
-  Box,
-  Card,
-  CardContent,
-  Link,
-  Rating,
-  Typography,
-} from '@mui/material';
+import { Box, Card, CardContent, Rating, Typography } from '@mui/material';
 
 interface ReviewProductProps {
   review: Review;
@@ -37,7 +31,7 @@ export const ReviewProduct = ({ review }: ReviewProductProps) => {
           color="primary"
           variant="body1"
           underline="hover"
-          href={`/products/${review.product._id}`}
+          to={`/products/${review.product._id}`}
         >
           {review.product.title}
         </Link>
@@ -56,7 +50,7 @@ export const ReviewProduct = ({ review }: ReviewProductProps) => {
             color="textSecondary"
             variant="body2"
             underline="hover"
-            href={`/products/${review.product._id}/reviews`}
+            to={`/products/${review.product._id}/reviews`}
           >
             {review.product.reviews.length} reviews
           </Link>

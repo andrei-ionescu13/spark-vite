@@ -2,6 +2,7 @@ import { AddProductsDialog } from '@/components/add-products-dialog';
 import { Button } from '@/components/button';
 import { FormInterval } from '@/components/form-interval';
 import { ImageDropzone } from '@/components/image-dropzone';
+import { Link } from '@/components/link';
 import { TextInput } from '@/components/text-input';
 import { ToastCreatedMessage } from '@/components/toast-created-message';
 import { useDialog } from '@/hooks/useDialog';
@@ -14,7 +15,6 @@ import {
   FormHelperText,
   Grid,
   IconButton,
-  Link,
   List,
   ListItem,
   Typography,
@@ -97,7 +97,7 @@ export const CreateDealForm = () => {
           <ToastCreatedMessage
             title="Deal created"
             subheader="Go to the deal"
-            href={`/products/deals/${data._id}`}
+            to={`/products/deals/${data._id}`}
           />
         );
       },
@@ -280,7 +280,7 @@ export const CreateDealForm = () => {
                             color="textPrimary"
                             variant="body1"
                             underline="hover"
-                            href={`/products/${product._id}`}
+                            to={`/products/${product._id}`}
                           >
                             {product.title}
                           </Link>

@@ -1,5 +1,6 @@
 import { AddUsersDialog } from '@/components/add-users-dialog';
 import { Button } from '@/components/button';
+import { Link } from '@/components/link';
 import { useDialog } from '@/hooks/useDialog';
 import type { User } from '@/types/user';
 import {
@@ -8,7 +9,6 @@ import {
   FormHelperText,
   Grid,
   IconButton,
-  Link,
   List,
   ListItem,
   Radio,
@@ -110,7 +110,7 @@ export const PromoCodeFormCustomers = () => {
                       color="textPrimary"
                       variant="body1"
                       underline="hover"
-                      href={`/users/${user._id}`}
+                      to={`/users/${user._id}`}
                     >
                       {user.email}
                     </Link>

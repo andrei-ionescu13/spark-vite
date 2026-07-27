@@ -9,7 +9,6 @@ import {
   DialogTitle,
   FormControl,
   FormHelperText,
-  Link,
   Rating,
   TableCell,
   useTheme,
@@ -27,6 +26,7 @@ import { Button } from './button';
 import { DataTableRow } from './data-table-row';
 import { ActionsIconButton } from './icon-actions';
 import { Label } from './label';
+import { Link } from './link';
 import { StatusSelect, type StatusOption } from './status';
 
 interface StatusUpdateProps {
@@ -228,7 +228,7 @@ export const RaviewsTableRow = ({
             color="textPrimary"
             variant="body1"
             underline="hover"
-            href={`/reviews/${review._id}`}
+            to={`/reviews/${review._id}`}
           >
             {review._id}
           </Link>
@@ -245,7 +245,7 @@ export const RaviewsTableRow = ({
               color="textPrimary"
               variant="body1"
               underline="hover"
-              href={`/products/${review.product._id}`}
+              to={`/products/${review.product._id}`}
             >
               {review.product.title}
             </Link>
@@ -257,7 +257,7 @@ export const RaviewsTableRow = ({
               color="textPrimary"
               variant="body1"
               underline="hover"
-              href={`/users/${review.user._id}`}
+              to={`/users/${review.user._id}`}
             >
               {review.user.email}
             </Link>

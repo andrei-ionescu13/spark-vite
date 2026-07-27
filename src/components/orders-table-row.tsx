@@ -1,4 +1,4 @@
-import { Checkbox, colors, Link, TableCell, useTheme } from '@mui/material';
+import { Checkbox, colors, TableCell, useTheme } from '@mui/material';
 import { useDialog } from '../hooks/useDialog';
 import type { Order } from '../types/orders';
 import { formatDate } from '../utils/format-date';
@@ -7,6 +7,7 @@ import { AlertDialog } from './alert-dialog';
 import { DataTableRow } from './data-table-row';
 import { ActionsIconButton } from './icon-actions';
 import { Label } from './label';
+import { Link } from './link';
 
 interface OrdersTableRowProps {
   order: Order;
@@ -64,7 +65,7 @@ export const OrdersTableRow = ({
         <TableCell>
           <Link
             underline="hover"
-            href={`/orders/${order.orderNumber}`}
+            to={`/orders/${order.orderNumber}`}
           >
             {order.orderNumber}
           </Link>
@@ -75,7 +76,7 @@ export const OrdersTableRow = ({
               color="textPrimary"
               variant="inherit"
               underline="hover"
-              href={`/users/${order.customer._id}`}
+              to={`/users/${order.customer._id}`}
             >
               {order.email}
             </Link>

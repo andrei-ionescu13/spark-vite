@@ -1,8 +1,9 @@
 import { AlertDialog, type AlertDialogProps } from '@/components/alert-dialog';
+import { Link } from '@/components/link';
 import { TextInput } from '@/components/text-input';
 import type { ArticleCategory } from '@/types/article-category';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Box, FormHelperText, Grid, Link, Typography } from '@mui/material';
+import { Box, FormHelperText, Grid, Typography } from '@mui/material';
 import { useQueryClient } from '@tanstack/react-query';
 import { Controller, useForm, type SubmitHandler } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -31,7 +32,7 @@ const ToastSuccess = (id: string) => (
     </Typography>
     <Link
       color="textPrimary"
-      href={`/articles/${id}`}
+      to={`/articles/${id}`}
       underline="hover"
       variant="body1"
     >

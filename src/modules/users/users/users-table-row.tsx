@@ -2,7 +2,8 @@ import type { ActionsItem } from '@/components/actions-menu';
 import { AlertDialog } from '@/components/alert-dialog';
 import { DataTableRow } from '@/components/data-table-row';
 import { ActionsIconButton } from '@/components/icon-actions';
-import { Box, Checkbox, Link, TableCell, useTheme } from '@mui/material';
+import { Link } from '@/components/link';
+import { Box, Checkbox, TableCell, useTheme } from '@mui/material';
 import { Label } from 'recharts';
 import { useDialog } from '../../../hooks/useDialog';
 import type { User } from '../../../types/user';
@@ -79,7 +80,7 @@ export const UsersTableRow = ({
         <TableCell>
           <Link
             underline="hover"
-            href={`/users/${user._id}`}
+            to={`/users/${user._id}`}
           >
             {user._id}
           </Link>
@@ -89,7 +90,7 @@ export const UsersTableRow = ({
             color="textPrimary"
             variant="body1"
             underline="hover"
-            href={`/users/${user._id}`}
+            to={`/users/${user._id}`}
           >
             {user.email}
           </Link>

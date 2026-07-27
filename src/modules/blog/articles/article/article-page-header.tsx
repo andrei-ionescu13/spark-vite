@@ -1,11 +1,12 @@
 import type { ActionsItem } from '@/components/actions-menu';
 import { AlertDialog } from '@/components/alert-dialog';
 import { Label } from '@/components/label';
+import { Link } from '@/components/link';
 import { MarkdownPreview } from '@/components/markdown-preview';
 import { PageHeader } from '@/components/page-header';
 import { useDialog } from '@/hooks/useDialog';
 import type { Article, ArticleStatus } from '@/types/articles';
-import { Box, colors, Link, Typography, useTheme } from '@mui/material';
+import { Box, colors, Typography, useTheme } from '@mui/material';
 import { CopyIcon, EyeIcon, TrashIcon } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import { useDeleteArticle } from '../../api';
@@ -26,7 +27,7 @@ const ToastSuccess = (id: string) => (
     </Typography>
     <Link
       color="textPrimary"
-      href={`/articles/${id}`}
+      to={`/articles/${id}`}
       underline="hover"
       variant="body1"
     >

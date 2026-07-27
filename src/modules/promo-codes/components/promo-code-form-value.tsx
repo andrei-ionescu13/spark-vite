@@ -1,5 +1,6 @@
 import { AddProductsDialog } from '@/components/add-products-dialog';
 import { Button } from '@/components/button';
+import { Link } from '@/components/link';
 import { TextInput } from '@/components/text-input';
 import { useDialog } from '@/hooks/useDialog';
 import type { Product } from '@/types/products';
@@ -11,7 +12,6 @@ import {
   Grid,
   IconButton,
   InputAdornment,
-  Link,
   List,
   ListItem,
   Radio,
@@ -188,7 +188,7 @@ export const PromoCodeFormValue = () => {
                       color="textPrimary"
                       variant="body1"
                       underline="hover"
-                      href={`/products/${product._id}`}
+                      to={`/products/${product._id}`}
                     >
                       {product.title}
                     </Link>

@@ -1,4 +1,5 @@
 import { AddProductsDialog } from '@/components/add-products-dialog';
+import { Link } from '@/components/link';
 import { TextInput } from '@/components/text-input';
 import { useDialog } from '@/hooks/useDialog';
 import type { Product } from '@/types/products';
@@ -10,7 +11,6 @@ import {
   Grid,
   IconButton,
   InputAdornment,
-  Link,
   List,
   ListItem,
   Typography,
@@ -158,7 +158,7 @@ export const DiscountFormValue = () => {
                     color="textPrimary"
                     variant="body1"
                     underline="hover"
-                    href={`/products/${product._id}`}
+                    to={`/products/${product._id}`}
                   >
                     {product.title}
                   </Link>

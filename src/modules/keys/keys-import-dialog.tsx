@@ -1,5 +1,6 @@
+import { Link } from '@/components/link';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Box, FormHelperText, Link, Typography } from '@mui/material';
+import { Box, FormHelperText, Typography } from '@mui/material';
 import { useQueryClient } from '@tanstack/react-query';
 import type { ChangeEvent } from 'react';
 import { useRef } from 'react';
@@ -88,7 +89,7 @@ export const KeysImportDialog = ({ open, onClose }: KeysImportDialogProps) => {
           <Link
             color="textSecondary"
             variant="body1"
-            href="https://res.cloudinary.com/desubtoqp/image/upload/v1655918415/products/Untitled_arihfo.png"
+            to="https://res.cloudinary.com/desubtoqp/image/upload/v1655918415/products/Untitled_arihfo.png"
             target="_blank"
           >
             check format

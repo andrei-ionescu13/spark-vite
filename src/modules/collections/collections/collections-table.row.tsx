@@ -3,10 +3,11 @@ import { AlertDialog } from '@/components/alert-dialog';
 import { DataTableRow } from '@/components/data-table-row';
 import { ActionsIconButton } from '@/components/icon-actions';
 import { Label } from '@/components/label';
+import { Link } from '@/components/link';
 import { useDialog } from '@/hooks/useDialog';
 import type { Collection } from '@/types/collection';
 import { getStatusFromInterval } from '@/utils/get-status-from-interval';
-import { Checkbox, colors, Link, TableCell, useTheme } from '@mui/material';
+import { Checkbox, colors, TableCell, useTheme } from '@mui/material';
 import { useQueryClient } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import { EyeOffIcon, TrashIcon } from 'lucide-react';
@@ -105,7 +106,7 @@ export const CollectionsTableRow = ({
         </TableCell>
         <TableCell>
           <Link
-            href={`/products/collections/${collection._id}`}
+            to={`/products/collections/${collection._id}`}
             underline="hover"
           >
             {collection.title}

@@ -1,10 +1,11 @@
 import { AlertDialog } from '@/components/alert-dialog';
 import { DataTableRow } from '@/components/data-table-row';
 import { ActionsIconButton } from '@/components/icon-actions';
-import { Box, Checkbox, Link, TableCell, Typography } from '@mui/material';
+import { Box, Checkbox, TableCell, Typography } from '@mui/material';
 import { useQueryClient } from '@tanstack/react-query';
 
 import type { ActionsItem } from '@/components/actions-menu';
+import { Link } from '@/components/link';
 import { useDialog } from '@/hooks/useDialog';
 import type { ArticleCategory } from '@/types/article-category';
 import { PencilIcon, TrashIcon } from 'lucide-react';
@@ -21,7 +22,7 @@ const ToastSuccess = (id: string) => (
     </Typography>
     <Link
       color="textPrimary"
-      href={`/articles/${id}`}
+      to={`/articles/${id}`}
       underline="hover"
       variant="body1"
     >

@@ -1,4 +1,5 @@
 import { Label } from '@/components/label';
+import { Link } from '@/components/link';
 import type { Order, OrderStatus } from '@/types/orders';
 import {
   Box,
@@ -6,7 +7,6 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  Link,
   List,
   ListItem,
   Typography,
@@ -72,7 +72,7 @@ export const UserOrders = ({ orders }: UserOrdersProps) => {
                 </Typography>
               </Box>
               <Link
-                href="orders/1"
+                to="orders/1"
                 color="textPrimary"
                 variant="subtitle1"
                 sx={{ mx: 5 }}

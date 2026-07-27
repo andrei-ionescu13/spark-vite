@@ -1,12 +1,12 @@
 import type { ActionsItem } from '@/components/actions-menu';
 import { AlertDialog } from '@/components/alert-dialog';
 import { ActionsIconButton } from '@/components/icon-actions';
+import { Link } from '@/components/link';
 import { useDialog } from '@/hooks/useDialog';
 import type { Language, Namespace } from '@/types/translations';
 import {
   Box,
   IconButton,
-  Link,
   Table,
   TableBody,
   TableCell,
@@ -141,7 +141,7 @@ export const NamespacesTableRow = ({
             />
           </IconButton>
           <Link
-            href={`/namespaces/${namespace._id}`}
+            to={`/namespaces/${namespace._id}`}
             color="inherit"
             underline="hover"
           >

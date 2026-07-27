@@ -2,6 +2,7 @@ import { AddProductsDialog } from '@/components/add-products-dialog';
 import { Button } from '@/components/button';
 import { FormInterval } from '@/components/form-interval';
 import { ImageDropzone } from '@/components/image-dropzone';
+import { Link } from '@/components/link';
 import { TextInput } from '@/components/text-input';
 import { useDialog } from '@/hooks/useDialog';
 import type { Product } from '@/types/products';
@@ -13,7 +14,6 @@ import {
   FormHelperText,
   Grid,
   IconButton,
-  Link,
   List,
   ListItem,
   Typography,
@@ -96,7 +96,7 @@ export const CreateCollectionForm = () => {
         //   <ToastCreatedMessage
         //     title="Collection created"
         //     subheader="Go to the collection"
-        //     href={`/products/collections/${data._id}`}
+        //     to={`/products/collections/${data._id}`}
         //   />
         // );
       },
@@ -279,7 +279,7 @@ export const CreateCollectionForm = () => {
                             color="textPrimary"
                             variant="body1"
                             underline="hover"
-                            href={`/products/${product._id}`}
+                            to={`/products/${product._id}`}
                           >
                             {product.title}
                           </Link>

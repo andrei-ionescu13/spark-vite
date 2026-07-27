@@ -3,10 +3,11 @@ import { AlertDialog } from '@/components/alert-dialog';
 import { DataTableRow } from '@/components/data-table-row';
 import { ActionsIconButton } from '@/components/icon-actions';
 import { Label } from '@/components/label';
+import { Link } from '@/components/link';
 import { useDialog } from '@/hooks/useDialog';
 import type { Deal } from '@/types/deal';
 import { getStatusFromInterval } from '@/utils/get-status-from-interval';
-import { Checkbox, colors, Link, TableCell, useTheme } from '@mui/material';
+import { Checkbox, colors, TableCell, useTheme } from '@mui/material';
 import { useQueryClient } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import { EyeOffIcon, TrashIcon } from 'lucide-react';
@@ -102,7 +103,7 @@ export const DealsTableRow = ({
         </TableCell>
         <TableCell>
           <Link
-            href={`/products/deals/${deal._id}`}
+            to={`/products/deals/${deal._id}`}
             underline="hover"
           >
             {deal.title}

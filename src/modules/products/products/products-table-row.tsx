@@ -1,6 +1,7 @@
 import type { ActionsItem } from '@/components/actions-menu';
+import { Link } from '@/components/link';
 import { useDialog } from '@/hooks/useDialog';
-import { Checkbox, colors, Link, TableCell, useTheme } from '@mui/material';
+import { Checkbox, colors, TableCell, useTheme } from '@mui/material';
 import { useQueryClient } from '@tanstack/react-query';
 import { PencilIcon, TrashIcon, UploadIcon } from 'lucide-react';
 import { AlertDialog } from '../../../components/alert-dialog';
@@ -86,7 +87,7 @@ export const ProductTableRow = ({
             color="textPrimary"
             variant="body1"
             underline="hover"
-            href={`/products/${product._id}`}
+            to={`/products/${product._id}`}
           >
             {product._id}
           </Link>
@@ -94,7 +95,7 @@ export const ProductTableRow = ({
         <TableCell>
           <Link
             underline="hover"
-            href={`/products/${product._id}`}
+            to={`/products/${product._id}`}
           >
             {product.title}
           </Link>

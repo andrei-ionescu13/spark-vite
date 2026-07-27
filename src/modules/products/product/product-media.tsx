@@ -1,6 +1,7 @@
 import { Button } from '@/components/button';
 import { InfoList } from '@/components/info-list';
 import { InfoListItem } from '@/components/info-list-item';
+import { Link } from '@/components/link';
 import type { Product } from '@/types/products';
 import {
   Box,
@@ -9,7 +10,6 @@ import {
   CardHeader,
   Divider,
   Grid,
-  Link,
 } from '@mui/material';
 
 interface ProductMediaProps {
@@ -50,7 +50,7 @@ export const ProductMedia = ({
                 <Box>
                   <Link
                     target="_blank"
-                    href={product.cover.url}
+                    to={product.cover.url}
                     sx={{ display: 'block' }}
                   >
                     <img
@@ -92,7 +92,7 @@ export const ProductMedia = ({
                     >
                       <Link
                         target="_blank"
-                        href={image.url}
+                        to={image.url}
                         sx={{ display: 'block' }}
                       >
                         <img

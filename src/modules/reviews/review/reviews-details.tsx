@@ -1,6 +1,7 @@
+import { Link } from '@/components/link';
 import type { Review } from '@/types/review';
 import { formatDate } from '@/utils/format-date';
-import { Box, Card, Divider, Link, Rating, Typography } from '@mui/material';
+import { Box, Card, Divider, Rating, Typography } from '@mui/material';
 
 interface ReviewsDetailsProps {
   review: Review;
@@ -45,7 +46,7 @@ export const ReviewsDetails = ({ review }: ReviewsDetailsProps) => {
             color="primary"
             variant="inherit"
             underline="hover"
-            href={`/users/${review.user._id}`}
+            to={`/users/${review.user._id}`}
           >
             {review.user.email}
           </Link>

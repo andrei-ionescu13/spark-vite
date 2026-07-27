@@ -1,6 +1,7 @@
 import { Button } from '@/components/button';
 import { InfoList } from '@/components/info-list';
 import { InfoListItem } from '@/components/info-list-item';
+import { Link } from '@/components/link';
 import type { Article } from '@/types/articles';
 import { formatDate } from '@/utils/format-date';
 import {
@@ -10,7 +11,6 @@ import {
   CardHeader,
   Divider,
   Grid,
-  Link,
 } from '@mui/material';
 import { useState } from 'react';
 
@@ -108,7 +108,7 @@ export const ArticleGeneral = ({
                 <Box>
                   <Link
                     target="_blank"
-                    href={article.cover.url}
+                    to={article.cover.url}
                   >
                     <img
                       src={article.cover.url}

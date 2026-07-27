@@ -1,4 +1,5 @@
-import { Box, Link, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import { Link } from './link';
 
 interface ToastCreatedMessageProps {
   title: string;
@@ -21,7 +22,7 @@ export const ToastCreatedMessage = ({
       </Typography>
       <Link
         color="textSecondary"
-        href={href}
+        to={href}
         underline="hover"
         variant="body1"
       >

@@ -1,5 +1,6 @@
-import { Box, Link, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import type { ReactNode } from 'react';
+import { Link } from './link';
 
 export const ToastItemCreated = (label: string, href?: string): ReactNode => {
   return (
@@ -13,7 +14,7 @@ export const ToastItemCreated = (label: string, href?: string): ReactNode => {
       {href && (
         <Link
           color="textPrimary"
-          href={href}
+          to={href}
           underline="hover"
           variant="body1"
         >
