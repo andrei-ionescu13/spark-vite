@@ -55,7 +55,7 @@ export const ArticleForm = () => {
       title: z.string(),
     }),
     shouldPublish: z.boolean(),
-    category: schemas.category,
+    category: z.string(),
     title: z.string(),
     slug: z.string(),
     cover: z.instanceof(File),
@@ -95,6 +95,7 @@ export const ArticleForm = () => {
   const cover = watch('cover');
 
   const onSubmit: SubmitHandler<FormData> = (values) => {
+    console.log(values);
     const finalValues = {
       ...values,
       tags: values.tags.map((tag: any) => tag._id),
@@ -253,6 +254,7 @@ export const ArticleForm = () => {
                         return (
                           <TextInput
                             {...field}
+                            label="Category"
                             error={!!errors.category}
                             helperText={errors.category?.message}
                             fullWidth
